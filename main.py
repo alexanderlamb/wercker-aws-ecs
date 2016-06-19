@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 import sys
 import argparse
+import traceback
 
 from ecs import ECSService
 
@@ -86,5 +87,6 @@ try:
         success("Task %s succeeded" % (response.get('tasks')[0].get('taskArn')))
 
 except Exception as e:
+    traceback.print_exc()
     error(e)
     sys.exit(1)
